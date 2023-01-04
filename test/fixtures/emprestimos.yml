@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tempo_inicial: 2023-01-04 17:52:06
+  tempo_final: 2023-01-04 17:52:06
+  carro: one
+  Carro: MyString
+
+two:
+  tempo_inicial: 2023-01-04 17:52:06
+  tempo_final: 2023-01-04 17:52:06
+  carro: two
+  Carro: MyString
