@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_04_205647) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_05_183131) do
   create_table "carros", force: :cascade do |t|
     t.string "modelo"
     t.string "marca"
@@ -49,6 +49,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_205647) do
     t.string "Emprestimo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
+    t.string "senha"
     t.index ["emprestimo_id"], name: "index_locatarios_on_emprestimo_id"
   end
 

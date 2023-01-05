@@ -39,9 +39,7 @@ gem "jbuilder"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data"
 
-#gem 'bootstrap', '~> 5.2.2'
-
-gem 'bootstrap-sass'
+#gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 
 #gem 'sass', '~> 3.7', '>= 3.7.4'
 
@@ -50,6 +48,14 @@ gem "bootsnap", require: false
 
 # Use Sass to process CSS
 gem "sassc-rails"
+
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
+
+gem "font-awesome-sass", "~> 6.2.1"
+
+#gem 'bootstrap', '~> 5.2.2'
+
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -76,3 +82,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "tailwindcss-rails", "~> 2.0"
+

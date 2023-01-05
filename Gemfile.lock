@@ -68,14 +68,12 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
-    autoprefixer-rails (10.4.7.0)
-      execjs (~> 2)
     bindex (0.8.1)
     bootsnap (1.15.0)
       msgpack (~> 1.2)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
+    bootstrap5-kaminari-views (0.0.1)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.2.4)
     capybara (3.38.0)
       addressable
@@ -93,8 +91,9 @@ GEM
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     erubi (1.12.0)
-    execjs (2.8.1)
     ffi (1.15.5-x64-mingw-ucrt)
+    font-awesome-sass (6.2.1)
+      sassc (~> 2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -108,6 +107,18 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -195,6 +206,8 @@ GEM
     sqlite3 (1.5.4-x64-mingw-ucrt)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.0.21-x64-mingw-ucrt)
+      railties (>= 6.0.0)
     thor (1.2.1)
     tilt (2.0.11)
     timeout (0.3.1)
@@ -228,11 +241,13 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  bootstrap-sass
+  bootstrap5-kaminari-views
   capybara
   debug
+  font-awesome-sass (~> 6.2.1)
   importmap-rails
   jbuilder
+  kaminari
   puma (~> 5.0)
   rails (~> 7.0.4)
   sassc-rails
@@ -240,6 +255,7 @@ DEPENDENCIES
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
+  tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
   web-console

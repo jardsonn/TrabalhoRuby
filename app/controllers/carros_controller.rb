@@ -3,7 +3,7 @@ class CarrosController < ApplicationController
 
   # GET /carros or /carros.json
   def index
-    @carros = Carro.all
+    @carros = Carro.order(:marca).page(params[:page])
   end
 
   # GET /carros/1 or /carros/1.json
