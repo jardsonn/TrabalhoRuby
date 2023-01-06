@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @carro %>
+<%#= render @carro %>
+<p class="text-sm font-medium text-gray-900 truncate dark:text-gray-700">
+  <%= @carro.imagemUrl %>
+</p>
 
 <div>
   <%= link_to "Edit this carro", edit_carro_path(@carro) %> |
