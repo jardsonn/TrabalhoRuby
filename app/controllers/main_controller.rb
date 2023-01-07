@@ -1,11 +1,11 @@
 class MainController < ApplicationController
     protect_from_forgery
 
-    before_action :main
+    before_action :index
 
     protected
 
-    def main
+    def index
         @carros = Carro.take(3)
     end
 end

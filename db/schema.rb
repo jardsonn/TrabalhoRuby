@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_01_06_213424) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "carros", force: :cascade do |t|
     t.string "modelo"
     t.string "marca"
@@ -24,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_213424) do
   create_table "emprestimos", force: :cascade do |t|
     t.datetime "tempo_inicial"
     t.datetime "tempo_final"
-    t.integer "carro_id", null: false
+    t.bigint "carro_id", null: false
     t.string "Carro"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,9 +35,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_213424) do
   end
 
   create_table "locadoras", force: :cascade do |t|
-    t.integer "carro_id", null: false
+    t.bigint "carro_id", null: false
     t.string "Carro"
-    t.integer "locatario_id", null: false
+    t.bigint "locatario_id", null: false
     t.string "Locatario"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -46,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_213424) do
     t.string "nome"
     t.datetime "idade"
     t.string "telefone"
-    t.integer "emprestimo_id", null: false
+    t.bigint "emprestimo_id", null: false
     t.string "Emprestimo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
