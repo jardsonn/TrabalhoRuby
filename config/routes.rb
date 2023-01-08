@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  resources :carros
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
   root "main#index"
+
+  # post '/sessions' => 'sessions#create'
+  # post '/locatarios' => 'locatario#create'
+  get '/dashboard' => 'sessions#index'
+
+ resources :carros
 end
-#
-# Rails.application.routes.draw do
-#   get "/", to: "main#index"
-# end
