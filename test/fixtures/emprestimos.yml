@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  tempo_inicial: 2023-01-04 17:52:06
-  tempo_final: 2023-01-04 17:52:06
-  carro: one
-  Carro: MyString
+  usuario: one
+  data_inicial: 2023-01-08 18:37:48
+  data_final: 2023-01-08 18:37:48
+  valor: 1.5
 
 two:
-  tempo_inicial: 2023-01-04 17:52:06
-  tempo_final: 2023-01-04 17:52:06
-  carro: two
-  Carro: MyString
+  usuario: two
+  data_inicial: 2023-01-08 18:37:48
+  data_final: 2023-01-08 18:37:48
+  valor: 1.5
