@@ -1,32 +1,27 @@
 <div class="container mx-auto my-4">
-    <h2 class="text-2xl font-bold text-center my-3">Conheça nossa frota</h2>
+  <h2 class="text-2xl font-bold text-center my-3">Conheça nossa frota</h2>
 
-    <div class="flex justify-between my-10  mb-20">
-      <% @carros.each do |carro| %>
-        <div class="rounded-lg shadow-lg bg-white max-w-sm">
-          <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
-            <%= image_tag carro.imagemUrl, :class => "rounded-t-lg" %>
-          </a>
-          <div class="p-6">
-            <h5 class="text-gray-900 text-xl font-medium mb-2">
-              <%= carro.modelo %>
-            </h5>
-            <ul class="list-disc mb-4 pr-4">
-              <li class="text-gray-400 text-sm"><%= carro.marca %></li>
-              <li class="text-gray-400 text-sm"><%= carro.modelo %></li>
-              <li class="text-gray-400 text-sm"><%= carro.valor_aluguel %></li>
-            </ul>
-            <div class="flex justify-center">
-              <button type="button" class="inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
-                Detalhes
-              </button>
-            </div>
-          </div>
+  <div class="flex justify-between my-10  mb-20">
+    <% @carros.each do |carro| %>
+      <div class="bg-white p-10 rounded-lg shadow-md">
+        <%= image_tag carro.imagemUrl, :class => "rounded-t-lg" %>
+        <div class="p-6">
+          <h5 class="text-gray-900 text-xl font-medium mb-2">
+            <%= carro.modelo %>
+          </h5>
+          <ul class="list-disc mb-4 pr-4">
+            <li class="text-gray-400 text-sm"><%= carro.marca %></li>
+            <li class="text-gray-400 text-sm"><%= carro.modelo %></li>
+            <li class="text-gray-400 text-sm"><%= number_to_currency(carro.valor_aluguel, locale: :"pt-BR") %> por dia
+            </li>
+          </ul>
+          <%= link_to "Detalhes", carro, :class => "hover:text-blue-300 capitalize inline-block bg-transparent text-blue-600 font-medium text-xs leading-tight rounded focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out" %>
         </div>
-      <% end %>
-    </div>
-
-    <div class="flex justify-center">
-      <%= button_to "Ver todos veículos", carros_path, :class => "inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out", method: :get%>
-    </div>
+      </div>
+    <% end %>
   </div>
+
+  <div class="flex justify-center">
+    <%= button_to "Ver todos veículos", carros_path, :class => "inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out", method: :get %>
+  </div>
+</div>

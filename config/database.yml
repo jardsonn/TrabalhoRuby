@@ -2,20 +2,20 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: localhost
-  username: postgres
-  password: 123456
+  host: <%= ENV["DB_HOST"] %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
 
 development:
   <<: *default
-  database: locadora_de_veiculos_development
+  database: <%= ENV["DB_NAME_DEV"] %>
 
 test:
   <<: *default
-  database: locadora_de_veiculos_test
+  database: <%= ENV["DB_NAME_DEV"] %>
 
 production:
   <<: *default
-  database: locadora_de_veiculos_production
-  username: postgres
-  password: 123456
+  database: <%= ENV["DB_NAME_PRO"] %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
