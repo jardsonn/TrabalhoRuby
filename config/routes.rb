@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # post '/sessions' => 'sessions#create'
   # post '/locatarios' => 'locatario#create'
   get '/dashboard' => 'sessions#index'
+  get '/test', to: 'test#index'
 
  resources :carros
 end

@@ -1,32 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@roberio3620 
-jcs-eu
-/
-TrabalhoRuby
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-TrabalhoRuby/Gemfile.lock
-@jcs-eu
-jcs-eu ajustes
-Latest commit b4a6f5c now
- History
- 1 contributor
-275 lines (271 sloc)  6.34 KB
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -298,22 +269,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.1.3p185
 
 BUNDLED WITH
-   2.3.26
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-TrabalhoRuby/Gemfile.lock at master · jcs-eu/TrabalhoRuby
+   2.4.2
