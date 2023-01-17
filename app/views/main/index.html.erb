@@ -1,21 +1,21 @@
 <div class="container mx-auto my-4">
   <h2 class="text-2xl font-bold text-center my-3">Conheça nossa frota</h2>
 
-  <div class="flex justify-between my-10  mb-20">
+  <div class="flex justify-between my-10 space-x-8">
     <% @carros.each do |carro| %>
-      <div class="bg-white p-10 rounded-lg shadow-md">
+      <div class="bg-white p-5 rounded-lg shadow-md">
         <%= image_tag carro.imagemUrl, :class => "rounded-t-lg" %>
         <div class="p-6">
-          <h5 class="text-gray-900 text-xl font-medium mb-2">
+          <h5 class="text-xl font-black text-gray-800">
             <%= carro.modelo %>
           </h5>
-          <ul class="list-disc mb-4 pr-4">
-            <li class="text-gray-400 text-sm"><%= carro.marca %></li>
-            <li class="text-gray-400 text-sm"><%= carro.modelo %></li>
-            <li class="text-gray-400 text-sm"><%= number_to_currency(carro.valor_aluguel, locale: :"pt-BR") %> por dia
-            </li>
-          </ul>
-          <%= link_to "Detalhes", carro, :class => "hover:text-blue-300 capitalize inline-block bg-transparent text-blue-600 font-medium text-xs leading-tight rounded focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out" %>
+          <div class="mb-4 pr-4">
+            <p class="text-gray-400 font-black text-sm"><%= carro.marca %></p>
+            <p class="text-gray-400 font-black text-sm"><%= carro.modelo %></p>
+            <p class="text-gray-400 font-black text-sm"><%= number_to_currency(carro.valor_aluguel, locale: :"pt-BR") %>
+              por dia</p>
+          </div>
+          <%= link_to "Detalhes", emprestimo_path(carro.id), :class => "hover:text-blue-300 capitalize inline-block bg-transparent text-blue-600 font-medium text-base leading-tight rounded focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out" %>
         </div>
       </div>
     <% end %>

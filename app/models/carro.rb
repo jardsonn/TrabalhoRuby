@@ -1,4 +1,4 @@
 class Carro < ApplicationRecord
-  paginates_per 2
+  paginates_per 10
   belongs_to :emprestimo
 end

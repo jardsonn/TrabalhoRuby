@@ -50,7 +50,6 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 
 gem 'kaminari'
-gem 'bootstrap5-kaminari-views'
 
 gem "font-awesome-sass", "~> 6.2.1"
 
@@ -93,3 +92,7 @@ gem "figaro"
 
 gem "devise", "~> 4.8"
 gem "devise-i18n", "~> 1.10"
+
+gem 'jquery-rails'
+
+

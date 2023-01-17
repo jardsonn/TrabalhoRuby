@@ -1,5 +1,7 @@
 class CarrosController < ApplicationController
   before_action :set_carro, only: %i[ show edit update destroy ]
+  # before_action :require_user, only: [:show]
+  before_action :only_admin, only: [:new, :edit, :create]
 
   # GET /carros or /carros.json
   def index
@@ -8,6 +10,8 @@ class CarrosController < ApplicationController
 
   # GET /carros/1 or /carros/1.json
   def show
+    @emprestimo = Emprestimo.new
+    @emprestimo.user_id = session[:user_id]
   end
 
   # GET /carros/new
@@ -58,13 +62,31 @@ class CarrosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_carro
-      @carro = Carro.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def carro_params
-      params.require(:carro).permit(:modelo, :marca, :valor_aluguel, :placa, :imagemUrl)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_carro
+    @carro = Carro.find(params[:id])
+  end
+
+   def only_admin
+     if current_user
+       puts "Está aqui #{current_user.admin}"
+       unless current_user.admin
+         redirect_to root_path, non_admin: "Você não é administrador."
+       end
+     else
+       redirect_to new_user_session_path, not_logged_in: "Necessário está logado."
+     end
+  end
+
+
+
+  # Only allow a list of trusted parameters through.
+  def carro_params
+    params.require(:carro).permit(:modelo, :marca, :valor_aluguel, :placa, :imagemUrl)
+  end
+
+  def emprestimo_params
+    params.require(:emprestimo).permit(:user_id, :data_inicial, :data_final, :valor)
+  end
 end
