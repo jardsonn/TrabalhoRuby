@@ -2,13 +2,14 @@ Rails.application.routes.draw do
   # devise_for :users
   devise_for :users, controllers: { registrations: 'registrations' }
 
-
-
   root "main#index"
   resources :carros
   resources :emprestimos
   resources :emprestimos, only: [:show]
   get "user/profile", to: "user#index"
+
+  get '/test', to: 'test#index'
+
   # authenticated :user do
   #
   #   puts "Está autenticado ooooooi #{user_signed_in?}"
@@ -16,3 +17,5 @@ Rails.application.routes.draw do
   # end
 
 end
+
+
