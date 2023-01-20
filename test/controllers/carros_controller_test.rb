@@ -5,7 +5,7 @@ class CarrosControllerTest < ActionDispatch::IntegrationTest
     @carro = carros(:one)
   end
 
-  test "should get index" do
+  test "should get reservas" do
     get carros_url
     assert_response :success
   end

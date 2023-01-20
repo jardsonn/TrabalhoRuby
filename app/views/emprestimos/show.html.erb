@@ -33,8 +33,10 @@
     <div class="flex justify-between">
 
       <%= form_with model: @emprestimo, class: "w-screen", html: { id: 'emprestimo-form' } do |form| %>
-        <%= form.hidden_field :valor, value: @carro.valor_aluguel %>
+        <%= form.hidden_field "valor", value: @carro.valor_aluguel, id: "emprestimo_valor"%>
+        <%= form.hidden_field :valor, id: "valor-total-final"%>
         <%= form.hidden_field :user_id, value: current_user.id %>
+        <%= form.hidden_field :carro_id, value:  @carro.id %>
         <div class="flex justify-between space-x-10 mb-3">
           <div class="flex-column">
             <%= form.label "Retirada", class: "text-base font-black text-gray-400" %>

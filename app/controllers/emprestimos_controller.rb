@@ -11,12 +11,10 @@ class EmprestimosController < ApplicationController
 
     respond_to do |format|
       if @emprestimo.save
-        format.html { redirect_to root_path, notice: "Carro alugado com sucesso!" }
+        format.html { redirect_to root_path }
         format.json { render :show, status: :created, location: @emprestimo }
       else
         redirect_to root_path
-        # format.html { render :new, status: :unprocessable_entity }
-        # format.json { render json: @emprestimo.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -26,9 +24,15 @@ class EmprestimosController < ApplicationController
   end
 
   def emprestimo_params
-    params.require(:emprestimo).permit(:user_id, :data_inicial, :data_final, :valor)
+    params.require(:emprestimo).permit(:user_id, :data_inicial, :data_final, :valor, :carro_id)
   end
 
+
+  def calular_valor(valor_final, valor_inicial, valor)
+    diff_in_time = (valor_final - valor_inicial)
+    diff_in_days = diff_in_time / (1000 * 3600 * 24)
+    (diff_in_days * valor)
+  end
 
   private
 

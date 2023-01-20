@@ -1,0 +1,62 @@
+<!-- component -->
+<div class="flex min-h-screen">
+  <nav class="tex-gray-900 fixed top-0 left-0 flex h-screen w-64 flex-col border border-blue-600 bg-blue-600 px-4">
+    <div class="mt-8 ml-10 mb-4 flex flex-wrap items-baseline pt-1">
+      <div class="mr-4">
+        <i class="fa-sharp fa-solid fa-circle-user text-white text-sm"></i>
+      </div>
+      <p class="text-white font-black text-sm">Olá, <%= current_user.name %></p>
+    </div>
+    <hr/>
+    <div class="mt-4 mb-4">
+      <ul class="">
+        <li class="mb-2 rounded-lg border-gray-300 px-4 py-4 text-white hover:bg-blue-500 hover:font-bold">
+          <span><i class="fa-sharp fa-solid fa-list"></i></span>
+          <%= link_to "Minha Reservas", user_profile_reservas_path, class: "ml-2" %>
+        </li>
+        <li class="mb-2 rounded-lg border-gray-300 px-4 py-4 text-white bg-blue-500 font-bold">
+          <span><i class="fa-sharp fa-solid fa-car"></i></span>
+          <%= link_to "Nova Reserva", class: "ml-2"%>
+        </li>
+        <li class="mb-2 rounded-lg border-gray-300 px-4 py-4 text-white hover:bg-blue-500 hover:font-bold">
+          <span><i class="fa-solid fa-user"></i></span>
+          <%= link_to "Informações", user_profile_informacao_path, class: "ml-2" %>
+        </li>
+        <li class="mb-2 rounded-lg border-gray-300 px-4 py-4 text-white hover:bg-blue-500 hover:font-bold">
+          <span><i class="fa-sharp fa-solid fa-right-from-bracket"></i></span>
+          <%= link_to "Sair", destroy_user_session_path, class: "ml-2" %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="flex-1 pl-64 m-5">
+    <h3 class="text-lg font-black text-gray-700 mb-2">Alugar novo veículo</h3>
+    <hr/>
+    <div class="grid gap-4 grid-cols-2 mt-10">
+      <% @carros.each do |carro| %>
+        <%= link_to emprestimo_path(carro.id) do %>
+          <div class="hover:cursor-pointer hover:bg-blue-200 transition duration-500 hover:border-blue-200 relative flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl mx-auto border border-white bg-white">
+            <div class="w-full md:w-1/3 grid place-items-center">
+              <%= image_tag carro.imagemUrl, :class => "rounded-xl", alt: carro.modelo %>
+            </div>
+            <div class="w-full md:w-2/3 flex flex-col space-y-2 p-3">
+              <h5 class="text-xl font-black text-gray-800"><%= carro.modelo.capitalize %></h5>
+              <div class="flex justify-start">
+                <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= carro.marca %></span>
+              </div>
+              <p class="text-xl font-black text-gray-800">
+                <%= number_to_currency(carro.valor_aluguel, locale: :"pt-BR") %>
+                <span class="font-normal text-gray-600 text-base">/dia</span>
+              </p>
+              <hr>
+              <p class="text-xs text-gray-500">Modelo sujeito à disponibilidade da agência.</p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

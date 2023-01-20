@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.3"
+ruby "3.1.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
@@ -94,5 +94,8 @@ gem "devise", "~> 4.8"
 gem "devise-i18n", "~> 1.10"
 
 gem 'jquery-rails'
+
+gem 'prawn', '~> 2.3'
+
 
 

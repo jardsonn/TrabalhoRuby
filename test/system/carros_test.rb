@@ -5,7 +5,7 @@ class CarrosTest < ApplicationSystemTestCase
     @carro = carros(:one)
   end
 
-  test "visiting the index" do
+  test "visiting the reservas" do
     visit carros_url
     assert_selector "h1", text: "Carros"
   end

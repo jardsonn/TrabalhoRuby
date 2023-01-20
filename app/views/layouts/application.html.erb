@@ -11,36 +11,59 @@
 <body class="bg-slate-50">
 <header>
   <!-- Navbar -->
-  <div class="bg-gray-100 font-sans w-full m-0 mb-1">
-    <div class="bg-white shadow">
-      <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between py-4">
-          <div>
-            <h4 class="font-black text-gray-800 md:text-3xl text-base">J&R Veículos</h4>
-          </div>
-          <div class="hidden sm:flex sm:items-center">
-            <% if user_signed_in? %>
-              <p>Olá, <%= current_user.name %></p>
-              <%= button_to "Sair", destroy_user_session_path, class: "ml-4 hover:text-blue-300 capitalize inline-block bg-transparent text-blue-600 font-medium text-base leading-tight rounded focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out",method: :delete %>
-            <% else %>
-              <%= link_to "Entrar", new_user_session_path, class: "text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4" %>
-              <%= link_to "Registra-se", new_user_registration_path, class: "text-gray-800 text-sm font-semibold border px-4 py-2 rounded-lg hover:text-purple-600 hover:border-purple-600" %>
-            <% end %>
-          </div>
-        </div>
 
-        <div class="block sm:hidden bg-white border-t-2 py-2">
-          <div class="flex flex-col">
-            <div class="flex justify-between items-center border-t-2 pt-2">
-              <a href="#" class="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4">Entrar</a>
-              <a href="#" class="text-gray-800 text-sm font-semibold border px-4 py-1 rounded-lg hover:text-purple-600 hover:border-purple-600">
-                Registra-se</a>
+  <% if request.path != user_profile_reservas_path and request.path != user_profile_nova_reserva_path and request.path != user_profile_informacao_path %>
+
+    <div class="bg-gray-100 font-sans w-full m-0">
+      <div class="bg-white shadow">
+        <div class="container mx-auto px-4">
+          <div class="flex items-center justify-between py-4">
+            <div>
+              <h4 class="font-black text-gray-800 md:text-3xl text-base">J&R Veículos</h4>
+            </div>
+            <div class="hidden sm:flex sm:items-center">
+              <% if user_signed_in? %>
+                <div class="flex justify-center" id="drop-down-menu">
+                  <div class="relative min-w-fit">
+                    <div class="flex justify-between w-40 rounded-lg py-2 px-2 hover:bg-gray-50 border-2 items-center">
+                      <p class="text-base font-bold text-gray-600"><%= current_user.name %></p>
+                      <i class="fa-solid fa-caret-down text-gray-600"></i>
+                    </div>
+                    <ul id="drop-down-container" class="hidden absolute z-50 float-left m-0 mt-1 min-w-max w-40 list-none rounded-lg border-none bg-gray-50 bg-clip-padding py-2 text-left text-base shadow-lg">
+                      <li>
+                        <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:font-bold" href="#">Perfil</a>
+                      </li>
+                      <li>
+                        <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:font-bold" href="#">Meus
+                          carros</a>
+                      </li>
+                      <hr class="my-2 h-0 border border-t-0 border-solid border-gray-700 opacity-25"/>
+                      <li>
+                        <%= link_to "Sair", destroy_user_session_path, class: "block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:font-bold" %>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              <% else %>
+                <%= link_to "Entrar", new_user_session_path, class: "text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4" %>
+                <%= link_to "Registra-se", new_user_registration_path, class: "text-gray-800 text-sm font-semibold border px-4 py-2 rounded-lg hover:text-purple-600 hover:border-purple-600" %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="block sm:hidden bg-white border-t-2 py-2">
+            <div class="flex flex-col">
+              <div class="flex justify-between items-center border-t-2 pt-2">
+                <a href="#" class="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4">Entrar</a>
+                <a href="#" class="text-gray-800 text-sm font-semibold border px-4 py-1 rounded-lg hover:text-purple-600 hover:border-purple-600">
+                  Registra-se</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
   <!-- Navbar -->
   <!-- Background image -->
   <% if request.path == root_path %>
@@ -71,31 +94,33 @@
 
 <!--  Footer-->
 <%= javascript_include_tag 'scripts', media: 'all', 'data-turbo-track': 'reload' %>
-<footer class="text-center bg-gray-900 text-white mt-10">
-  <div class="px-6 pt-6">
-    <div class="flex justify-center mb-3">
-      <a href="#!" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
-        <div class="p-1">
-          <i class="fa-brands fa-instagram"></i>
-        </div>
-      </a>
-      <a href="#!" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
-        <div class="p-1">
-          <i class="fa-brands fa-linkedin"></i>
-        </div>
-      </a>
-      <a href="#!" type="button" class="flex justify-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
-        <div class="p-1">
-          <i class="fa-brands fa-twitter"></i>
-        </div>
-      </a>
+<% if request.path == "user/profile" %>
+  <footer class="text-center bg-gray-900 text-white mt-10">
+    <div class="px-6 pt-6">
+      <div class="flex justify-center mb-3">
+        <a href="#!" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
+          <div class="p-1">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </a>
+        <a href="#!" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
+          <div class="p-1">
+            <i class="fa-brands fa-linkedin"></i>
+          </div>
+        </a>
+        <a href="#!" type="button" class="flex justify-center rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
+          <div class="p-1">
+            <i class="fa-brands fa-twitter"></i>
+          </div>
+        </a>
+      </div>
     </div>
-  </div>
 
-  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
-    © J&R Veículos - Todos direitos reservados
-  </div>
-</footer>
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
+      © J&R Veículos - Todos direitos reservados
+    </div>
+  </footer>
+<% end %>
 </body>
 
 </html>

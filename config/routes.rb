@@ -6,9 +6,26 @@ Rails.application.routes.draw do
   resources :carros
   resources :emprestimos
   resources :emprestimos, only: [:show]
-  get "user/profile", to: "user#index"
+
+  get "user/profile/reservas", to: "user#reservas"
+  get "user/profile/nova_reserva", to: "user#nova_reserva"
+  get "user/profile/informacao", to: "user#informacao"
+
+  get "download_csv", to: "download#download_csv"
+
+  get "download_pdf", to: "download#dowload_pdf"
 
   get '/test', to: 'test#index'
+
+  # get 'shared/carros_grid', to: 'shared#carros_grid'
+
+  # get 'shared/:name/', to: 'shared#show', as: 'shared'
+  # get 'shared/:name/:emprestimos', to: 'shared#show', as: 'shared'
+
+  # get 'shared/:name/:emprestimos', to: 'shared#show', as: 'shared', emprestimos: []
+  # get 'shared/:name', to: 'shared#show', as: 'shared', emprestimos: []
+
+
 
   # authenticated :user do
   #

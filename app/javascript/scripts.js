@@ -11,6 +11,7 @@ function updateDateLimit() {
     }
 }
 
+
 updateDateLimit()
 $(document).ready(function () {
 
@@ -29,6 +30,7 @@ $(document).ready(function () {
             const diffInDays = diffInTime / (1000 * 3600 * 24);
             const valorAluguel = parseFloat($('#emprestimo_valor').val())
             const valorFinal = diffInDays * valorAluguel
+            $('#valor-total-final').val(valorFinal)
             if (diffInDays < 0) {
                 btnAlugar.attr("disabled", true);
                 valorFinalInput.addClass("hidden");
@@ -36,7 +38,6 @@ $(document).ready(function () {
 
             const formatado = `R$ ${valorFinal.toFixed(2).replace(".", ",")}`;
             $('#valor-final').text(formatado)
-            console.log(diffInDays)
         } else {
             $('#btn-emprestimos').attr("disabled", true);
             $('#valor-final-show').addClass("hidden");
@@ -82,3 +83,63 @@ function unformatValue(valor) {
     return valor.replace(/[^0-9\,\.]+/g, "").replace(",", ".");
 }
 
+$("#drop-down-menu").on("mouseenter", function () {
+    $("#drop-down-container").removeClass("hidden");
+})
+
+$("#drop-down-menu").on("mouseleave", function () {
+    $("#drop-down-container").addClass("hidden");
+})
+
+
+// $(document).on('click', '.menu-link', function() {
+//     let fragment = $(this).data('fragment');
+//     $.ajax({
+//         url: '/shared/'+ fragment,
+//         type: 'GET',
+//         success: function(data) {
+//             $('#dashboard-container').html(data);
+//         }
+//     });
+// });
+
+function showFragment(e, fragment, emprestimos) {
+    e.preventDefault();
+    $('#spinner').show();
+    $.ajax({
+        type: 'GET',
+        url: '/shared/' + fragment,
+        data: { emprestimos: emprestimos },
+        success: function (data) {
+            $('#spinner').hide();
+            $('#dashboard-container').html(data);
+        }
+    });
+}
+
+$(document).ready(function () {
+    $('#carros-grid').click(function (e) {
+        let fragment = $(this).data('fragment');
+        let emprestimos = $(this).data('emprestimos')
+
+        showFragment(e, fragment, emprestimos)
+    });
+
+    $('#my-emprestimos').click(function (e) {
+        let fragment = $(this).data('fragment');
+        let emprestimos = $(this).data('emprestimos')
+        console.log(emprestimos)
+        showFragment(e, fragment, emprestimos)
+    });
+
+    $('#user-information').click(function (e) {
+        let fragment = $(this).data('fragment');
+        let emprestimos = $(this).data('emprestimos')
+        showFragment(e, fragment, emprestimos)
+    });
+});
+
+
+setTimeout(function() {
+    $('#download-csv-success').fadeOut();
+}, 3000);
