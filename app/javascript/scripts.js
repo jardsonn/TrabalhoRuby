@@ -143,3 +143,23 @@ $(document).ready(function () {
 setTimeout(function() {
     $('#download-csv-success').fadeOut();
 }, 3000);
+
+$("#user_birthdate").on("change",function(){
+    const data = new Date(this.value)
+    const hoje = new Date()
+    var ano = hoje.getFullYear() - data.getFullYear()
+    const m = hoje.getMonth() - data.getMonth()
+    if(m<0||(m===0 && hoje.getDate<ano.getDate)){
+        ano--
+    } 
+    const bnt = $("#bnt_sign_up")
+    const aviso = $("#aviso_idade")
+    if(ano>=18){
+      bnt.show()   
+      aviso.hide() 
+    } else{
+        bnt.hide()
+        aviso.show() 
+    }
+    console.log(data)
+})

@@ -1,8 +1,11 @@
 <!-- component -->
 <div class="flex min-h-screen">
   <nav class="tex-gray-900 fixed top-0 left-0 flex h-screen w-64 flex-col border border-blue-600 bg-blue-600 px-4">
-    <div class="mt-8 ml-10 mb-4 flex flex-wrap items-baseline pt-1">
+  <%= link_to "J&R", root_path, class: "text-white font-black mt-2 text-4xl" %>
+  
+  <div class="mt-2 ml-2 mb-4 flex flex-wrap items-baseline pt-1">
       <div class="mr-4">
+      
         <i class="fa-sharp fa-solid fa-circle-user text-white text-sm"></i>
       </div>
       <p class="text-white font-black text-sm">Olá, <%= current_user.name %></p>
@@ -12,11 +15,21 @@
       <ul class="">
         <li class="mb-2 rounded-lg border-gray-300 px-4 py-4 text-white hover:bg-blue-500 hover:font-bold">
           <span><i class="fa-sharp fa-solid fa-list"></i></span>
+          <% if current_user.admin?%>
+          <%= link_to "Usuários cadastrados", user_profile_lista_cliente_path, class: "ml-2" %>
+          <% else %>
           <%= link_to "Minha Reservas", user_profile_reservas_path, class: "ml-2" %>
+          <% end %>
+          
         </li>
         <li class="mb-2 rounded-lg border-gray-300 px-4 py-4 text-white hover:bg-blue-500 hover:font-bold">
           <span><i class="fa-sharp fa-solid fa-car"></i></span>
+          <% if current_user.admin?%>
+          <%= link_to "Carros Cadastrados", user_profile_lista_carro_path, class: "ml-2" %>
+          <% else %>
           <%= link_to "Nova Reserva", user_profile_nova_reserva_path, class: "ml-2" %>
+          <% end %>
+         
         </li>
         <li class="mb-2 rounded-lg border-gray-300 px-4 py-4 text-white bg-blue-500 font-bold">
           <span><i class="fa-solid fa-user"></i></span>
@@ -24,7 +37,7 @@
         </li>
         <li class="mb-2 rounded-lg border-gray-300 px-4 py-4 text-white hover:bg-blue-500 hover:font-bold">
           <span><i class="fa-sharp fa-solid fa-right-from-bracket"></i></span>
-          <%= link_to "Sair", destroy_user_session_path, class: "ml-2" %>
+          <%= link_to "Sair",destroy_user_session_path, class: "ml-2",data: { "turbo-method": :delete } %>
         </li>
       </ul>
     </div>
@@ -42,7 +55,15 @@
 
         <div class="col-span-2 py-2">
           <p class="text-xs font-black text-gray-400">Data de nacimento</p>
-          <p class="text-lg font-black text-gray-600">00/00/00</p>
+          
+          <p class="text-lg font-black text-gray-600">
+          <% if current_user.birthdate.nil?%>
+            não definido
+            <% else %>
+          <%= current_user.birthdate.strftime("%d/%m/%Y") %>
+          <% end %>
+          </p>
+
         </div>
 
         <div class="col-span-2 py-2">

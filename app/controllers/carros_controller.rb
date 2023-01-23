@@ -29,7 +29,7 @@ class CarrosController < ApplicationController
 
     respond_to do |format|
       if @carro.save
-        format.html { redirect_to carro_url(@carro), notice: "Carro was successfully created." }
+        format.html { redirect_to emprestimo_path(@carro), notice: "Carro criado com sucesso." }
         format.json { render :show, status: :created, location: @carro }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class CarrosController < ApplicationController
   def update
     respond_to do |format|
       if @carro.update(carro_params)
-        format.html { redirect_to carro_url(@carro), notice: "Carro was successfully updated." }
+        format.html { redirect_to emprestimos_path, notice: "Carro was successfully updated." }
         format.json { render :show, status: :ok, location: @carro }
       else
         format.html { render :edit, status: :unprocessable_entity }

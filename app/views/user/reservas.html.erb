@@ -1,7 +1,9 @@
 <!-- component -->
 <div class="flex min-h-screen">
   <nav class="tex-gray-900 fixed top-0 left-0 flex h-screen w-64 flex-col border border-blue-600 bg-blue-600 px-4">
-    <div class="mt-8 ml-10 mb-4 flex flex-wrap items-baseline pt-1">
+  <%= link_to "J&R", root_path, class: "text-white font-black mt-2 text-4xl" %>
+  
+  <div class="mt-2 ml-2 mb-4 flex flex-wrap items-baseline pt-1">
       <div class="mr-4">
         <i class="fa-sharp fa-solid fa-circle-user text-white text-sm"></i>
       </div>
@@ -25,7 +27,8 @@
         </li>
         <li class="mb-2 rounded-lg border-gray-300 px-4 py-4 text-white hover:bg-blue-500 hover:font-bold">
           <span><i class="fa-sharp fa-solid fa-right-from-bracket"></i></span>
-          <%= link_to "Sair", destroy_user_session_path, class: "ml-2" %>
+          <%= link_to "Sair",destroy_user_session_path, class: "ml-2",data: { "turbo-method": :delete } %>
+
         </li>
       </ul>
     </div>

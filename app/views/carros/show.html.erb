@@ -31,7 +31,7 @@
     <hr>
     <h6 class="text-base font-black text-gray-600 mt-2">Selecione o perído</h6>
     <div class="flex justify-between">
-
+      
       <%= form_with model: @emprestimo, class: "w-screen", html: { id: 'emprestimo-form' } do |form| %>
         <%= form.hidden_field :valor_aluguel, value: @carro.valor_aluguel %>
         <%#= f.hidden_field :user_id, value: session[:user_id] %>

@@ -12,13 +12,17 @@
     <hr/>
     <div class="mt-4 mb-4">
       <ul class="">
-        <li class="mb-2 rounded-lg border-gray-300 px-4 py-4 text-white hover:bg-blue-500 hover:font-bold">
+      <li class="mb-2 rounded-lg border-gray-300 px-4 py-4 text-white hover:bg-blue-500 hover:font-bold">
           <span><i class="fa-sharp fa-solid fa-list"></i></span>
-          <%= link_to "Minha Reservas", user_profile_reservas_path, class: "ml-2" %>
+        
+          <%= link_to "Usuários Cadastrados", user_profile_lista_cliente_path, class: "ml-2" %>
+
         </li>
+
         <li class="mb-2 rounded-lg border-gray-300 px-4 py-4 text-white bg-blue-500 font-bold">
           <span><i class="fa-sharp fa-solid fa-car"></i></span>
-          <%= link_to "Nova Reserva", class: "ml-2"%>
+          <%= link_to "Carros Cadastrados", class: "ml-2" %>
+          
         </li>
         <li class="mb-2 rounded-lg border-gray-300 px-4 py-4 text-white hover:bg-blue-500 hover:font-bold">
           <span><i class="fa-solid fa-user"></i></span>
@@ -33,8 +37,15 @@
     </div>
   </nav>
 
+
   <div class="flex-1 pl-64 m-5">
-    <h3 class="text-lg font-black text-gray-700 mb-2">Alugar novo veículo</h3>
+    <div class="flex justify-between mb-4">
+      <h3 class="text-lg font-black text-gray-700 mb-2">Lista de Carros </h3>
+      <div class="flex">
+        <%= link_to "Cadastrar novo carro", new_carro_path, class: "hover:bg-gray-50 hover:rounded-full tracking-widest text-xs text-blue-700 font-bold border-2 rounded-md px-5 py-1 flex place-items-center" %>
+      </div>
+    </div>
+
     <hr/>
     <div class="grid gap-4 grid-cols-2 mt-10">
       <% @carros.each do |carro| %>
@@ -59,7 +70,11 @@
         <% end %>
       <% end %>
     </div>
+
+  
+</div>
   </div>
+
 </div>
 
 
