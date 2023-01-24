@@ -73,7 +73,6 @@ $("#input-aluguel").on("keyup", function () {
     value = value.replace(/[^0-9]/g, "");
     value = value.replace(/(\d{1,2})$/, ",$1");
     value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
-    // value = "R$ " + value;
     this.value = value;
     $("#output-aluguel").val(unformatValue(this.value))
 })
