@@ -84,7 +84,9 @@ end
 
 gem "tailwindcss-rails", "~> 2.0"
 
-gem 'pg', '~> 0.18.4'
+group :production do
+  gem 'pg'
+end
 
 gem "figaro"
 
