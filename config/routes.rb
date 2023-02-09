@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # devise_for :users
   devise_for :users, controllers: { registrations: 'registrations' }
 
   root "main#index"
@@ -17,24 +16,6 @@ Rails.application.routes.draw do
   get "download_csv", to: "download#download_csv"
 
   get "download_pdf", to: "download#dowload_pdf"
-
-  get '/test', to: 'test#index'
-
-  # get 'shared/carros_grid', to: 'shared#carros_grid'
-
-  # get 'shared/:name/', to: 'shared#show', as: 'shared'
-  # get 'shared/:name/:emprestimos', to: 'shared#show', as: 'shared'
-
-  # get 'shared/:name/:emprestimos', to: 'shared#show', as: 'shared', emprestimos: []
-  # get 'shared/:name', to: 'shared#show', as: 'shared', emprestimos: []
-
-
-
-  # authenticated :user do
-  #
-  #   puts "Está autenticado ooooooi #{user_signed_in?}"
-  #   # root :to => "users#show", as: 'user_root'
-  # end
 
 end
 

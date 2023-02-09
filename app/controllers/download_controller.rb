@@ -22,12 +22,15 @@ class DownloadController < ApplicationController
     pdf = Prawn::Document.new
     emprestimos.each do |e|
       carro = Carro.find(e.carro_id)
-      pdf.text carro.modelo
-      pdf.text carro.marca
-      pdf.text carro.placa
-      pdf.text e.data_inicial.strftime("%dd/%MM/%yyyy")
-      pdf.text e.data_final.strftime("%dd/%MM/%yyyy")
-      pdf.text number_to_currency(e.valor, locale: :"pt-BR")
+      pdf.text "Meus Emprestimos", :align => :center, :size => 24, :styles => [:bold]
+      pdf.move_down 5
+      pdf.text "<b>Modelo:</b> #{carro.modelo}", :inline_format => true
+      pdf.text "<b>Marca:</b> #{carro.marca}", :inline_format => true
+      pdf.text "<b>Placa:</b> #{carro.placa}", :inline_format => true
+      pdf.text "<b>Data inicial:</b> #{e.data_inicial.strftime('%m/%d/%Y')}", :inline_format => true
+      pdf.text "<b>Data final:</b> #{e.data_final.strftime('%m/%d/%Y')}", :inline_format => true
+      pdf.text "<b>Valor do emprestimo:</b> #{number_to_currency(e.valor, locale: :"pt-BR")}", :inline_format => true
+      pdf.move_down 20
     end
     send_data(pdf.render,
               filename: "emprestimos_#{current_user.name}.pdf",
